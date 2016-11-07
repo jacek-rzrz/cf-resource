@@ -57,6 +57,9 @@ func (cf *CloudFoundry) PushApp(manifest string, path string, currentAppName str
 		args = append(args, "-p", path)
 	}
 
+	// Maximum time (in seconds) for CLI to wait for application start
+	args = append(args, "-t", "600")
+
 	return cf.cf(args...).Run()
 }
 
